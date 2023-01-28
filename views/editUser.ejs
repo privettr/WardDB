@@ -1,0 +1,35 @@
+<% layout('layouts/boilerplate') -%>
+
+    <hr>
+    <h2>Update User Details</h2>
+    <hr>
+    <form action="/users/<%=user.id%>?_method=PATCH" method="POST" >
+            <div class="container smallerWidth">
+                <label class="form-label" for="firstName">First Name</label>
+                <input class="form-control" type="text" id="firstName" name="firstName" required value="<%=user.firstName%>">
+                <label class="form-label" for="lastName">Last Name</label>
+                <input class="form-control" type="text" id="lastName" name="lastName" required value="<%=user.lastName%>">
+                <label class="form-label" for="username">Username</label>
+                <input class="form-control" type="text" id="username" name="username" required value="<%=user.username%>">
+            </div>
+            <div class="d-inline-block mt-3 me-3">
+                <label class="form-check-label" for="isNurse">Nurse?</label>
+                <input class="form-check-input" type="checkbox" id="isNurse" name="isNurse" value="true"
+                <% if(user.isNurse) { %>
+                    checked
+                <% } %>
+                >
+            </div>
+            <div class="d-inline-block mt-3 ms-3">
+                <label class="form-check-label" for="isAdmin">Admin?</label>
+                <input class="form-check-input" type="checkbox" id="isAdmin" name="isAdmin" value="true"
+                <% if(user.isAdmin) { %>
+                    checked
+                <% } %>
+                >
+            </div>
+            <div class="d-block mt-3">
+            <a class="btn btn-secondary" href="/users/userIndex">Cancel</a>
+            <button class="btn btn-info" type="submit">Confirm</button>
+        </div>
+        </form>

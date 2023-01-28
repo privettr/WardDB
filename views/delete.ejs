@@ -1,0 +1,53 @@
+<% layout('layouts/boilerplate') -%>
+
+<hr>
+<h2>Confirm Discharge?</h2>
+<hr>
+<form method="POST" action="/patients/<%=patient.id%>?_method=DELETE">
+    <a class="btn btn-secondary" href="/patients/<%=patient.id%>">Cancel</a>
+    <button class="btn btn-danger">Confirm</button>
+</form>
+<br>
+<div class="container">
+    <h5>
+        <%=`${patient.firstName} ${patient.lastName}`%>
+            <br>
+            <%=`DOB: ${patient.DOB.toLocaleDateString()}`%>
+    </h5>
+    <hr>
+</div>
+<div id="summary" class="container">
+    <div class="row">
+        <div class="col-sm">
+            <%=`${patient.email}`%>
+                <br>
+                <%=`${patient.telephone}`%>
+                    <br>
+                    <%=`${patient.first}`%>
+                        <br>
+                        <% if (patient.second) { %>
+                            <%=`${patient.second}`%>
+                                <br>
+                                <% } %>
+                                    <%=`${patient.town}`%>
+                                        <br>
+                                        <%=`${patient.postcode}`%>
+                                            <br>
+                                            <br>
+        </div>
+        <div class="col-sm">
+            Room number: <%=`${patient.room}`%>
+                <br>
+                Date of admission:
+                <%=`${patient.dateOfAdmission.toLocaleDateString()}`%>
+                    <br>
+                    MHA Status: <%=`${patient.MHA}`%>
+                        <br>
+                        Obs Level: <%=`${patient.obs}`%>
+                            <br>
+                            NEWS: <%=`${patient.NEWS}`%>
+                                <br>
+                                S17 Leave: <%=`${patient.leave}`%>
+        </div>
+    </div>
+</div>

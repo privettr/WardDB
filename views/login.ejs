@@ -1,0 +1,20 @@
+<% layout('layouts/boilerplate') -%>
+
+    <hr>
+    <h2>Welcome to WardDB</h2>
+    <hr>
+    <!-- novalidate class="needs-validation" -->
+    <form action="/login" method="POST">
+        <div class="container smallerWidth">
+            <div>
+                <label class="form-label" for="username">Username</label>
+                <input class="form-control" type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label class="form-label" for="password">Password</label>
+                <input class="form-control" type="password" id="password" name="password" required>
+            </div>
+        </div>
+        <br>
+        <button class="btn btn-info" type="submit">Log In</button>
+    </form>

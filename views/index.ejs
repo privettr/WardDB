@@ -1,0 +1,69 @@
+<% layout('layouts/boilerplate') -%>
+
+    <table class="table table-primary table-striped table-hover mt-4">
+        <thead>
+            <tr>
+                <th scope="col">Room</th>
+                <th scope="col">Name</th>
+                <th scope="col">DOB</th>
+                <th scope="col">MHA Status</th>
+                <th scope="col">Obs Level</th>
+                <th scope="col">NEWS</th>
+                <th scope="col">S17 Leave</th>
+                <th scope="col">Date of Admission</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        <% for(patient of patients) { %>
+            <tr>
+                <th scope="row">
+                    <%=patient.room%>
+                </th>
+                <td>
+                    <a class="link-dark" href="/patients/<%=patient._id%>">
+                        <%=`${patient.firstName} ${patient.lastName}`%>
+                    </a>
+                </td>
+                <td>
+                    <%=patient.DOB.toLocaleDateString()%>
+                </td>
+                <td>
+                    <%=patient.MHA%>
+                </td>
+                <td <% if (patient.obs=="Eyesight" ) { %>
+                    class="table-danger"
+                    <% } else if (patient.obs=="Intermittent" ) { %>
+                        class="table-warning"
+                        <% } %>
+                            >
+                            <%=patient.obs%>
+                </td>
+                <td <% if (patient.NEWS=="QDS" ) { %>
+                    class="table-danger"
+                    <% } else if (patient.NEWS=="TDS" ) { %>
+                        class="table-warning"
+                        <% } else if (patient.NEWS=="BD" ) { %>
+                            class="table-info"
+                            <% } %>
+                                >
+                                <%=patient.NEWS%>
+                </td>
+                <td <% if (patient.leave=="Ward Based" ) { %>
+                    class="table-danger"
+                    <% } else if (patient.leave=="Escorted" ) { %>
+                        class="table-warning"
+                        <% } %>
+                            >
+                            <%=patient.leave%>
+                </td>
+                <td>
+                    <%=patient.dateOfAdmission.toLocaleDateString()%>
+                </td>
+            </tr>
+            <% } %>
+                </tbody>
+    </table>
+
+
+
+    

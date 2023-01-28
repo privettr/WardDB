@@ -1,0 +1,126 @@
+<% layout('layouts/boilerplate') -%>
+
+    <hr>
+    <h2>Update Patient Details</h2>
+    <hr>
+    <!-- novalidate class="needs-validation" -->
+    <form action="/patients/<%=patient.id%>?_method=PATCH" method="POST" >
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <div>
+                        <label class="form-label" for="firstName">First Name</label>
+                        <input class="form-control" type="text" id="firstName" name="firstName"
+                            value="<%=patient.firstName%>" required>
+                    </div>
+                    <div>
+                        <label class="form-label" for="lastName">Last Name</label>
+                        <input class="form-control" type="text" id="lastName" name="lastName"
+                            value="<%=patient.lastName%>" required>
+                    </div>
+                    <div>
+                        <label class="form-label" for="DOB">DOB</label>
+                        <input class="form-control" type="date" id="DOB" name="DOB"
+                            value="<%=patient.DOB.toISOString().split('T')[0]%>" required>
+                    </div>
+                    <div>
+                        <label class="form-label" for="email">Email</label>
+                        <input class="form-control" type="email" id="email" name="email" value="<%=patient.email%>"
+                            required>
+                    </div>
+                    <div>
+                        <label class="form-label" for="telephone">Telephone Number</label>
+                        <input class="form-control" type="text" id="telephone" name="telephone"
+                            value="<%=patient.telephone%>" required>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div>
+                        <label class="form-label" for="first">Address Line 1</label>
+                        <input class="form-control" type="text" id="first" name="first" value="<%=patient.first%>"
+                            required>
+                    </div>
+                    <div>
+                        <label class="form-label" for="second">Address Line 2 (optional)</label>
+                        <input class="form-control" type="text" id="second" name="second" value="<%=patient.second%>">
+                    </div>
+                    <div>
+                        <label class="form-label" for="town">Town/City</label>
+                        <input class="form-control" type="text" id="town" name="town" value="<%=patient.town%>"
+                            required>
+                    </div>
+                    <div>
+                        <label class="form-label" for="postcode">Postcode</label>
+                        <input class="form-control" type="text" id="postcode" name="postcode"
+                            value="<%=patient.postcode%>" required>
+                    </div>
+                    <div>
+                        <label class="form-label" for="dateOfAdmission">Date of Admission</label>
+                        <input class="form-control" type="date" id="dateOfAdmission" name="dateOfAdmission"
+                            value="<%=patient.dateOfAdmission.toISOString().split('T')[0]%>" required>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div>
+                        <label class="form-label" for="room">Room Number</label>
+                        <select name="room" class="form-select" required>
+                            <% for ( var i=1; i < 11;i++ ) { var isSelected=( patient.room==i ) ? "selected" : "" ; %>
+                                <option value="<%=i%>" <%=isSelected %>>
+                                    <%= i %>
+                                </option>
+                                <% } %>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="form-label" for="MHA">MHA Status</label>
+                        <select name="MHA" class="form-select" required>
+                            <% var options=["Informal", "Section 2" , "Section 3" ]; for ( var i=0; i <
+                                options.length;i++ ) { var isSelected=( patient.MHA==options[i] ) ? "selected" : "" ; %>
+                                <option value="<%=options[i]%>" <%=isSelected %>>
+                                    <%= options[i] %>
+                                </option>
+                                <% } %>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label" for="obs">Observation Level</label>
+                        <select name="obs" class="form-select" required>
+                            <% var options=["General", "Intermittent" , "Eyesight" ]; for ( var i=0; i <
+                                options.length;i++ ) { var isSelected=( patient.obs==options[i] ) ? "selected" : "" ; %>
+                                <option value="<%=options[i]%>" <%=isSelected %>>
+                                    <%= options[i] %>
+                                </option>
+                                <% } %>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label" for="NEWS">NEWS</label>
+                        <select name="NEWS" class="form-select" required>
+                            <% var options=["OD", "BD" , "TDS" , "QDS" ]; for ( var i=0; i < options.length;i++ ) { var
+                                isSelected=( patient.NEWS==options[i] ) ? "selected" : "" ; %>
+                                <option value="<%=options[i]%>" <%=isSelected %>>
+                                    <%= options[i] %>
+                                </option>
+                                <% } %>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label" for="leave">S17 Leave</label>
+                        <select name="leave" class="form-select" required>
+                            <% var options=["N/A", "Unescorted" , "Escorted" , "Ward Based" ]; for ( var i=0; i <
+                                options.length;i++ ) { var isSelected=( patient.leave==options[i] ) ? "selected" : "" ;
+                                %>
+                                <option value="<%=options[i]%>" <%=isSelected %>>
+                                    <%= options[i] %>
+                                </option>
+                                <% } %>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <a class="btn btn-secondary" href="/patients/<%=patient.id%>">Cancel</a>
+        <button class="btn btn-info" type="submit">Confirm</button>
+    </form>

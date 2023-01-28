@@ -1,0 +1,20 @@
+<% layout('layouts/boilerplate') -%>
+
+    <hr>
+    <h2>Confirm Deletion of User?</h2>
+    <hr>
+
+    <br>
+    <div class="container">
+        <h5>
+            Name: <%=`${user.firstName} ${user.lastName}`%>
+        </h5>
+        <h5 class="mt-3">
+            Username: <%=user.username%>
+        </h5>
+        <form class="mt-5" method="POST" action="/users/<%=user.id%>?_method=DELETE">
+            <a class="btn btn-secondary" href="/users/userIndex">Cancel</a>
+            <button class="btn btn-danger">Confirm</button>
+        </form>
+
+    </div>

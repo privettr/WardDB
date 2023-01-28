@@ -1,0 +1,56 @@
+<% layout('layouts/boilerplate') -%>
+
+    <hr>
+    <h2>Patient Information</h2>
+    <hr>
+    <a class="btn btn-dark" href="/patients/<%=patient.id%>/notes">Notes</a>
+    <a class="btn btn-secondary" href="/patients/<%=patient.id%>/edit">Update Info</a>
+    <%if(currentUser.isNurse) {%>
+        <a class="btn btn-info" href="/patients/<%=patient.id%>/delete">Discharge</a>
+        <% } %>
+    
+    <br>
+    <br>
+    <div class="container">
+        <h5>
+            <%=`${patient.firstName} ${patient.lastName}`%>
+                <br>
+                <%=`DOB: ${patient.DOB.toLocaleDateString()}`%>
+        </h5>
+        <hr>
+    </div>
+    <div id="summary" class="container">
+        <div class="row">
+            <div class="col-sm">
+                <%=`${patient.email}`%>
+                    <br>
+                    <%=`${patient.telephone}`%>
+                        <br>
+                        <%=`${patient.first}`%>
+                            <br>
+                            <% if (patient.second) { %>
+                                <%=`${patient.second}`%>
+                                    <br>
+                                    <% } %>
+                                        <%=`${patient.town}`%>
+                                            <br>
+                                            <%=`${patient.postcode}`%>
+                                                <br>
+                                                <br>
+            </div>
+            <div class="col-sm">
+                Room number: <%=`${patient.room}`%>
+                    <br>
+                    Date of admission:
+                    <%=`${patient.dateOfAdmission.toLocaleDateString()}`%>
+                        <br>
+                        MHA Status: <%=`${patient.MHA}`%>
+                            <br>
+                            Obs Level: <%=`${patient.obs}`%>
+                                <br>
+                                NEWS: <%=`${patient.NEWS}`%>
+                                    <br>
+                                    S17 Leave: <%=`${patient.leave}`%>
+            </div>
+        </div>
+    </div>

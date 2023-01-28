@@ -1,0 +1,111 @@
+<% layout('layouts/boilerplate') -%>
+
+    <hr>
+    <h2>New Admission</h2>
+    <hr>
+    <!-- novalidate class="needs-validation" -->
+    <form action="/patients" method="POST" class="mb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <div>
+                        <label class="form-label" for="firstName">First Name</label>
+                        <input class="form-control" type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div>
+                        <label class="form-label" for="lastName">Last Name</label>
+                        <input class="form-control" type="text" id="lastName" name="lastName" required>
+                    </div>
+                    <div>
+                        <label class="form-label" for="DOB">DOB</label>
+                        <input class="form-control" type="date" id="DOB" name="DOB" required>
+                    </div>
+                    <div>
+                        <label class="form-label" for="email">Email</label>
+                        <input class="form-control" type="email" id="email" name="email" required>
+                    </div>
+                    <div>
+                        <label class="form-label" for="telephone">Telephone Number</label>
+                        <input class="form-control" type="text" id="telephone" name="telephone" required>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div>
+                        <label class="form-label" for="first">Address Line 1</label>
+                        <input class="form-control" type="text" id="first" name="first" required>
+                    </div>
+                    <div>
+                        <label class="form-label" for="second">Address Line 2 (optional)</label>
+                        <input class="form-control" type="text" id="second" name="second">
+                    </div>
+                    <div>
+                        <label class="form-label" for="town">Town/City</label>
+                        <input class="form-control" type="text" id="town" name="town" required>
+                    </div>
+                    <div>
+                        <label class="form-label" for="postcode">Postcode</label>
+                        <input class="form-control" type="text" id="postcode" name="postcode" required>
+                    </div>
+                    <div>
+                        <label class="form-label" for="dateOfAdmission">Date of Admission</label>
+                        <input class="form-control" type="date" id="dateOfAdmission" name="dateOfAdmission" required>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div>
+                        <label class="form-label" for="room">Room Number</label>
+                        <select class="form-select" name="room" id="room" required>
+                            <option value=""></option>
+                            <% for (i=1;i<11;i++) { %>
+                                <option value="<%=i%>">
+                                    <%=i%>
+                                </option>
+                                <% } %>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="form-label" for="MHA">MHA Status</label>
+                        <select class="form-select" name="MHA" id="MHA" required>
+                            <option value=""></option>
+                            <option value="Informal">Informal</option>
+                            <option value="Section 2">Section 2</option>
+                            <option value="Section 3">Section 3</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label" for="obs">Observation Level</label>
+                        <select class="form-select" name="obs" id="obs" required>
+                            <option value=""></option>
+                            <option value="General">General</option>
+                            <option value="Intermittent">Intermittent</option>
+                            <option value="Eyesight">Eyesight</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label" for="NEWS">NEWS</label>
+                        <select class="form-select" name="NEWS" id="NEWS" required>
+                            <option value=""></option>
+                            <option value="OD">OD</option>
+                            <option value="BD">BD</option>
+                            <option value="TDS">TDS</option>
+                            <option value="QDS">QDS</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label" for="leave">S17 Leave</label>
+                        <select class="form-select" name="leave" id="leave" required>
+                            <option value=""></option>
+                            <option value="N/A">N/A</option>
+                            <option value="Unescorted">Unescorted</option>
+                            <option value="Escorted">Escorted</option>
+                            <option value="Ward Based">Ward Based</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <a class="btn btn-secondary" href="/patients">Cancel</a>
+        <button class="btn btn-info" type="submit">Confirm</button>
+    </form>

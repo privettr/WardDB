@@ -1,0 +1,20 @@
+<% layout('layouts/boilerplate') -%>
+
+    <hr>
+    <h2>New note for <%=`${patient.firstName} ${patient.lastName}`%>
+    </h2>
+    <hr>
+    <form action="/patients/<%=id%>/notes?_method=PATCH" method="POST">
+        <a class="btn btn-secondary" href="/patients/<%=id%>/notes">Cancel</a>
+        <button class="btn btn-info">Confirm</button>
+        <br>
+        <br>
+        <div class="container center">
+            <div>
+                <label class="form-label" for="body"></label>
+                <textarea class="form-control card" name="body" id="body" cols="30" rows="10"
+                    placeholder="Type note here"></textarea>
+            </div>
+        </div>
+
+    </form>

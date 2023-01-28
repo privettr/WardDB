@@ -1,0 +1,48 @@
+<% layout('layouts/boilerplate') -%>
+
+<a class="btn btn-info mb-3" href="/users/newUser">Create New User</a>
+
+    <table class="table table-light table-striped table-hover mt-3">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Username</th>
+                <th scope="col">Nurse</th>
+                <th scope="col">Admin</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        <% for(user of users) { %>
+            <tr>
+                <td>
+                    <%=user.lastName%>, <%=user.firstName%>
+                </td>
+                <th scope="row">
+                    <%=user.username%>
+                </th>
+                <td>
+                    <% if (user.isNurse) {%>
+                        Yes
+                        <% } else { %>
+                            No
+                            <% } %>
+                </td>
+                <td>
+                    <% if (user.isAdmin) {%>
+                        Yes
+                        <% } else { %>
+                            No
+                            <% } %>
+                </td>
+                <td class="table-primary">
+                    <a class="link-dark"  href="<%=user.id%>/editUser">Update</a>
+                </td>
+                <td class="table-danger">
+                    <a class="link-dark"  href="<%=user.id%>/deleteUser">Delete</a>
+                </td>
+            </tr>
+            <% } %>
+                </tbody>
+    </table>
